@@ -1,0 +1,691 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Shaima Alahmadi — Software Engineer & UI/UX Designer</title>
+<meta name="description" content="Portfolio of Shaima Alahmadi, software engineering graduate focused on front-end development and UI/UX design.">
+<meta name="theme-color" content="#f5f5f7">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>👩‍💻</text></svg>">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Arabic:wght@400;500;600;700&family=Inter:wght@400;500;600;700&display=swap">
+<style>
+:root{
+  --bg:#ffffff; --bg2:#f5f5f7; --card:#ffffff; --text:#1d1d1f; --muted:#6e6e73; --line:#d2d2d7;
+  --accent:#0071e3; --accent-h:#0077ed; --nav:rgba(255,255,255,.72); --shadow:0 4px 24px rgba(0,0,0,.08);
+  --font:-apple-system,BlinkMacSystemFont,"SF Pro Display","SF Pro Text","Inter","IBM Plex Sans Arabic","Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+}
+:root[data-theme="dark"]{
+  --bg:#000000; --bg2:#101012; --card:#1c1c1e; --text:#f5f5f7; --muted:#a1a1a6; --line:#3a3a3c;
+  --accent:#2997ff; --accent-h:#409cff; --nav:rgba(22,22,23,.72); --shadow:0 4px 24px rgba(0,0,0,.5);
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth;scroll-padding-top:64px;-webkit-text-size-adjust:100%}
+body{font-family:var(--font);background:var(--bg);color:var(--text);line-height:1.47;-webkit-font-smoothing:antialiased;transition:background .3s,color .3s}
+a{color:var(--accent);text-decoration:none}
+a:hover{text-decoration:underline}
+button{font:inherit;color:inherit;cursor:pointer;border:0;background:none;text-align:start}
+:focus-visible{outline:2px solid var(--accent);outline-offset:3px;border-radius:8px}
+svg{width:1em;height:1em;fill:none;stroke:currentColor;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round;flex:none}
+[dir=rtl] *{letter-spacing:0!important}
+[dir=rtl] body{line-height:1.6}
+
+/* NAV */
+nav{position:sticky;top:0;z-index:50;background:var(--nav);backdrop-filter:saturate(180%) blur(20px);-webkit-backdrop-filter:saturate(180%) blur(20px);border-bottom:1px solid var(--line)}
+.nav-in{max-width:1024px;margin:0 auto;height:48px;display:flex;align-items:center;justify-content:space-between;padding:0 22px}
+.brand{font-weight:600;font-size:17px;color:var(--text)}
+.brand:hover{text-decoration:none}
+.links{display:flex;gap:26px;align-items:center}
+.links a{color:var(--text);opacity:.8;font-size:12px;transition:opacity .2s}
+.links a:hover,.links a.active{opacity:1;text-decoration:none}
+.links a.active{font-weight:600}
+.tools{display:flex;gap:4px;align-items:center}
+.icon-btn{width:32px;height:32px;border-radius:50%;display:grid;place-items:center;font-size:17px;transition:background .2s;text-align:center}
+.icon-btn:hover{background:var(--bg2)}
+.lang-btn{width:auto;padding:0 12px;border-radius:980px;font-size:13px;font-weight:600}
+.menu-btn{display:none}
+@media(max-width:860px){
+  .links{position:absolute;top:48px;left:0;right:0;flex-direction:column;gap:0;background:var(--bg);border-bottom:1px solid var(--line);padding:8px 22px 16px;display:none;align-items:flex-start}
+  .links.open{display:flex}
+  .links a{font-size:17px;padding:10px 0;width:100%}
+  .menu-btn{display:grid}
+}
+
+/* LAYOUT */
+section{padding:110px 22px}
+.wrap{max-width:1024px;margin:0 auto}
+.alt{background:var(--bg2)}
+h2{font-size:clamp(32px,5vw,48px);line-height:1.1;font-weight:700;letter-spacing:-.02em;margin-bottom:12px}
+[dir=rtl] h2{line-height:1.3}
+.lead{font-size:clamp(19px,2.4vw,24px);color:var(--muted);max-width:720px;line-height:1.4;letter-spacing:-.01em}
+.head{margin-bottom:56px}
+
+/* BUTTONS */
+.btn{display:inline-flex;align-items:center;gap:8px;padding:12px 24px;border-radius:980px;font-size:17px;font-weight:400;transition:background .2s,transform .15s;text-align:center}
+.btn:hover{text-decoration:none}
+.btn:active{transform:scale(.97)}
+.btn.primary{background:var(--accent);color:#fff}
+.btn.primary:hover{background:var(--accent-h)}
+.btn.ghost{color:var(--accent);box-shadow:inset 0 0 0 1px var(--accent)}
+.btn.ghost:hover{background:var(--accent);color:#fff}
+.btns{display:flex;gap:14px;flex-wrap:wrap;justify-content:center}
+
+/* HERO */
+.hero{text-align:center;padding:96px 22px 80px;min-height:calc(100vh - 48px);display:flex;flex-direction:column;justify-content:center;align-items:center}
+.avatar{width:112px;height:112px;border-radius:50%;display:grid;place-items:center;font-size:40px;font-weight:600;color:#fff;background:linear-gradient(135deg,#5ac8fa,#0071e3 55%,#5e5ce6);box-shadow:var(--shadow);margin-bottom:28px;animation:pop .8s cubic-bezier(.2,.8,.2,1) both}
+@keyframes pop{from{opacity:0;transform:scale(.7)}to{opacity:1;transform:none}}
+.pill{display:inline-flex;align-items:center;gap:8px;background:var(--bg2);padding:6px 14px;border-radius:980px;font-size:14px;color:var(--muted);margin-bottom:20px}
+.dot{width:8px;height:8px;border-radius:50%;background:#30d158}
+.hero h1{font-size:clamp(44px,9vw,92px);line-height:1.03;font-weight:700;letter-spacing:-.035em;max-width:900px}
+[dir=rtl] .hero h1{line-height:1.25;font-size:clamp(40px,8vw,80px)}
+.grad{background:linear-gradient(90deg,#0071e3,#5e5ce6 50%,#bf5af2);-webkit-background-clip:text;background-clip:text;color:transparent;padding-bottom:.08em}
+.hero p{font-size:clamp(19px,2.6vw,28px);color:var(--muted);max-width:680px;margin:22px auto 36px;line-height:1.3;letter-spacing:-.01em}
+[dir=rtl] .hero p{line-height:1.6}
+.socials{display:flex;gap:10px;margin-top:40px;justify-content:center}
+.socials a{width:44px;height:44px;border-radius:50%;background:var(--bg2);display:grid;place-items:center;font-size:20px;color:var(--text);transition:background .2s,transform .2s}
+.socials a:hover{background:var(--accent);color:#fff;transform:translateY(-3px);text-decoration:none}
+
+/* STATS */
+.stats{display:grid;grid-template-columns:repeat(4,1fr);gap:16px}
+.stat{background:var(--card);border-radius:24px;padding:32px 24px;text-align:center;box-shadow:var(--shadow)}
+.stat b{display:block;font-size:clamp(40px,6vw,60px);letter-spacing:-.03em;line-height:1;font-weight:700}
+.stat span{color:var(--muted);font-size:15px;display:block;margin-top:10px}
+@media(max-width:780px){.stats{grid-template-columns:1fr 1fr}}
+
+/* ABOUT */
+.about{display:grid;grid-template-columns:1.2fr 1fr;gap:56px;align-items:start}
+.about p{font-size:19px;color:var(--muted);margin-bottom:18px}
+.about p strong{color:var(--text);font-weight:600}
+.facts{background:var(--bg2);border-radius:24px;padding:28px;display:grid;gap:18px}
+.fact{display:flex;gap:14px;align-items:flex-start}
+.fact .ic{width:40px;height:40px;border-radius:12px;background:var(--card);display:grid;place-items:center;font-size:20px;color:var(--accent);flex:none}
+.fact small{display:block;color:var(--muted);font-size:13px}
+.fact div{font-size:16px;font-weight:500}
+@media(max-width:780px){.about{grid-template-columns:1fr;gap:32px}}
+
+/* SEGMENTED */
+.seg{display:inline-flex;background:var(--bg2);padding:3px;border-radius:980px;margin-bottom:36px;max-width:100%;overflow-x:auto}
+.alt .seg{background:var(--bg)}
+.seg button{padding:8px 20px;border-radius:980px;font-size:14px;font-weight:500;color:var(--muted);white-space:nowrap;transition:all .25s;text-align:center}
+.seg button[aria-selected="true"]{background:var(--card);color:var(--text);box-shadow:0 2px 8px rgba(0,0,0,.12)}
+:root[data-theme="dark"] .seg button[aria-selected="true"]{background:#3a3a3c}
+
+/* TIMELINE */
+.tl{display:grid;gap:16px}
+.item{background:var(--card);border-radius:24px;padding:28px 32px;box-shadow:var(--shadow);display:grid;grid-template-columns:150px 1fr;gap:24px;transition:transform .3s}
+.item:hover{transform:scale(1.01)}
+.when{color:var(--muted);font-size:14px;padding-top:4px}
+.item h3{font-size:21px;letter-spacing:-.01em;line-height:1.25}
+.item .org{color:var(--accent);font-size:15px;margin:2px 0 8px;font-weight:500}
+.item p{color:var(--muted);font-size:16px}
+.lnk{display:inline-flex;align-items:center;gap:6px;margin-top:12px;color:var(--accent);font-size:15px;font-weight:500}
+.lnk:hover{text-decoration:underline}
+@media(max-width:640px){.item{grid-template-columns:1fr;gap:6px;padding:24px}}
+.panel[hidden]{display:none}
+
+/* PROJECT TILES */
+.tiles{display:grid;grid-template-columns:1fr 1fr;gap:20px}
+.tile{border-radius:28px;padding:40px 36px 0;min-height:560px;display:flex;flex-direction:column;text-align:start;color:#fff;position:relative;overflow:hidden;transition:transform .4s cubic-bezier(.2,.8,.2,1)}
+.tile:hover{transform:scale(1.02)}
+.tile.a{background:linear-gradient(160deg,#1d1d1f,#2c2c54 60%,#5e5ce6)}
+.tile.b{background:linear-gradient(160deg,#0a2540,#0071e3 70%,#5ac8fa)}
+.tile small{font-size:14px;opacity:.75}
+.tile h3{font-size:34px;line-height:1.15;letter-spacing:-.02em;margin:8px 0 12px}
+.tile p{font-size:17px;opacity:.85;max-width:380px}
+.tile .tags{display:flex;gap:8px;flex-wrap:wrap;margin-top:18px}
+.tag{background:rgba(255,255,255,.16);padding:4px 12px;border-radius:980px;font-size:13px}
+.plus{position:absolute;top:24px;inset-inline-end:24px;width:36px;height:36px;border-radius:50%;background:rgba(255,255,255,.2);display:grid;place-items:center;font-size:20px;transition:background .2s,transform .3s;z-index:2}
+.tile:hover .plus{background:#fff;color:#000;transform:rotate(90deg)}
+.shot{margin-top:auto;padding-top:28px;height:270px;display:flex;justify-content:center;align-items:flex-end;overflow:hidden}
+.shot img{transition:transform .8s cubic-bezier(.2,.8,.2,1)}
+.tile:hover .shot img{transform:scale(1.05) translateY(-4px)}
+.tile.a .shot img{width:94%;height:230px;object-fit:cover;object-position:top;border-radius:14px 14px 0 0;box-shadow:0 -8px 40px rgba(0,0,0,.35)}
+.tile.b .shot img{max-width:100%;max-height:100%;object-fit:contain;filter:drop-shadow(0 12px 28px rgba(0,0,0,.35))}
+@media(max-width:780px){.tiles{grid-template-columns:1fr}.tile{min-height:520px}}
+
+/* DIALOG */
+dialog{border:0;border-radius:28px;max-width:640px;width:calc(100% - 32px);padding:40px;background:var(--card);color:var(--text);margin:auto;box-shadow:0 30px 80px rgba(0,0,0,.45)}
+dialog::backdrop{background:rgba(0,0,0,.45);backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px)}
+dialog[open]{animation:dlg .35s cubic-bezier(.2,.8,.2,1)}
+@keyframes dlg{from{opacity:0;transform:scale(.94) translateY(10px)}to{opacity:1;transform:none}}
+dialog h3{font-size:30px;letter-spacing:-.02em;line-height:1.15;margin:6px 0 10px;padding-inline-end:40px}
+dialog .sub{color:var(--muted);margin-bottom:20px}
+dialog ul{padding-inline-start:20px;display:grid;gap:12px;font-size:17px}
+dialog .tags{display:flex;gap:8px;flex-wrap:wrap;margin-top:24px}
+dialog .tag{background:var(--bg2);color:var(--muted)}
+dialog.wide{max-width:780px;max-height:90vh;overflow-y:auto}
+.close{position:absolute;top:20px;inset-inline-end:20px;width:32px;height:32px;border-radius:50%;background:var(--bg2);display:grid;place-items:center;font-size:16px;text-align:center}
+.close:hover{background:var(--line)}
+.gallery{display:flex;gap:12px;overflow-x:auto;scroll-snap-type:x mandatory;margin:0 -8px 24px;padding:0 8px 8px}
+.gallery figure{flex:none;scroll-snap-align:start;max-width:85%}
+.gallery img{height:240px;width:auto;max-width:100%;border-radius:16px;cursor:zoom-in;box-shadow:var(--shadow);background:var(--bg2);display:block;transition:transform .3s}
+.gallery img:hover{transform:scale(1.02)}
+.gallery figcaption{font-size:13px;color:var(--muted);margin-top:8px;text-align:center}
+@media(max-width:600px){.gallery img{height:190px}dialog{padding:28px 22px}}
+
+/* LIGHTBOX */
+#lb{max-width:min(1000px,94vw);width:auto;max-height:92vh;overflow:auto;padding:0;background:var(--card);border-radius:20px}
+#lb img{display:block;max-width:100%;height:auto;margin:auto}
+#lb .close{position:fixed;background:rgba(255,255,255,.92);color:#000;z-index:5}
+#lbCap{padding:14px 20px;text-align:center;font-size:14px;color:var(--muted)}
+
+/* HONORS */
+.grid3{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+.award{background:var(--card);border-radius:24px;padding:28px;box-shadow:var(--shadow);transition:transform .3s;overflow:hidden}
+.award:hover{transform:translateY(-6px)}
+.award .ic{font-size:30px;color:var(--accent);margin-bottom:16px}
+.award h3{font-size:19px;letter-spacing:-.01em;line-height:1.3;margin-bottom:8px}
+.award p{color:var(--muted);font-size:15px}
+.award .ph{margin:-28px -28px 20px;aspect-ratio:3/2;overflow:hidden;cursor:zoom-in;background:var(--bg2);display:block;padding:10px}
+.award .ph img{width:100%;height:100%;object-fit:contain;transition:transform .6s cubic-bezier(.2,.8,.2,1);display:block}
+.award .ph:hover img{transform:scale(1.04)}
+.award.has-img .ic{display:none}
+.award.big{grid-column:1/-1;background:linear-gradient(135deg,#0071e3,#5e5ce6);color:#fff}
+.award.big .ic,.award.big p{color:#fff;opacity:.92}
+.award.big.has-img{display:grid;grid-template-columns:1.1fr 1fr;gap:32px;align-items:center}
+.award.big .ph{margin:-28px 0 -28px -28px;margin-inline:-28px 0;aspect-ratio:3/2;background:rgba(255,255,255,.95);padding:16px}
+.award.big h3{font-size:26px}
+.award.big p{font-size:17px}
+.award .tagline{display:inline-block;font-size:12px;font-weight:600;background:rgba(255,255,255,.2);padding:3px 10px;border-radius:980px;margin-bottom:12px}
+@media(max-width:900px){.grid3{grid-template-columns:1fr 1fr}.award.big.has-img{grid-template-columns:1fr;gap:0}.award.big .ph{margin:-28px -28px 20px}}
+@media(max-width:600px){.grid3{grid-template-columns:1fr}}
+
+/* LETTERS */
+.letters{display:grid;grid-template-columns:1fr 1fr;gap:20px}
+.letter{background:var(--card);border-radius:24px;padding:28px;box-shadow:var(--shadow);display:flex;flex-direction:column;gap:16px;transition:transform .3s}
+.letter:hover{transform:translateY(-6px)}
+.lp{height:200px;overflow:hidden;border-radius:14px;border:1px solid var(--line);cursor:zoom-in;position:relative;background:#fff}
+.lp img{width:100%;height:100%;object-fit:cover;object-position:top;transition:transform .6s;display:block}
+.lp:hover img{transform:scale(1.04)}
+.lp::after{content:"";position:absolute;inset:auto 0 0 0;height:60px;background:linear-gradient(transparent,rgba(0,0,0,.18))}
+.letter .who{display:flex;gap:14px;align-items:center}
+.letter .av{width:48px;height:48px;border-radius:50%;background:linear-gradient(135deg,#5ac8fa,#0071e3);color:#fff;display:grid;place-items:center;font-weight:600;flex:none}
+.letter h3{font-size:18px;line-height:1.25}
+.letter small{color:var(--muted);font-size:14px;display:block;line-height:1.35}
+.letter blockquote{font-size:19px;font-weight:600;letter-spacing:-.01em;line-height:1.3}
+.letter p{color:var(--muted);font-size:15px;flex:1}
+.letter .btn{align-self:flex-start;padding:8px 18px;font-size:15px}
+@media(max-width:780px){.letters{grid-template-columns:1fr}}
+
+/* SKILLS */
+.chips{display:flex;flex-wrap:wrap;gap:12px}
+.chip{background:var(--card);padding:12px 22px;border-radius:980px;font-size:17px;box-shadow:var(--shadow);transition:transform .2s,background .2s,color .2s;cursor:default}
+.chip:hover{transform:translateY(-3px);background:var(--accent);color:#fff}
+
+/* CERTS */
+.certs{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+.cert{display:flex;gap:16px;align-items:center;background:var(--card);padding:18px 22px;border-radius:20px;box-shadow:var(--shadow);font-size:16px;line-height:1.35}
+.cert .ic{width:44px;height:44px;border-radius:12px;background:var(--bg2);display:grid;place-items:center;font-size:22px;color:var(--accent);flex:none}
+.cert small{display:block;color:var(--muted);font-size:13px}
+@media(max-width:700px){.certs{grid-template-columns:1fr}}
+
+/* CONTACT */
+.contact{text-align:center}
+.contact h2{font-size:clamp(36px,7vw,72px);letter-spacing:-.03em}
+.contact .lead{margin:0 auto 36px}
+footer{padding:28px 22px;text-align:center;color:var(--muted);font-size:12px;border-top:1px solid var(--line)}
+
+.rv{opacity:0;transform:translateY(24px);transition:opacity .8s ease,transform .8s cubic-bezier(.2,.8,.2,1)}
+.rv.in{opacity:1;transform:none}
+@media(prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}.rv{opacity:1;transform:none}html{scroll-behavior:auto}}
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="nav-in">
+    <a href="#top" class="brand" data-i="brand">Shaima</a>
+    <div class="links" id="links">
+      <a href="#about" data-i="n_about">About</a>
+      <a href="#experience" data-i="n_exp">Experience</a>
+      <a href="#projects" data-i="n_proj">Projects</a>
+      <a href="#awards" data-i="n_awards">Honors</a>
+      <a href="#letters" data-i="n_letters">Recommendations</a>
+      <a href="#skills" data-i="n_skills">Skills</a>
+      <a href="#contact" data-i="n_contact">Contact</a>
+    </div>
+    <div class="tools">
+      <button class="icon-btn lang-btn" id="lang" aria-label="Language">عربي</button>
+      <button class="icon-btn" id="theme" aria-label="Toggle dark mode">
+        <svg viewBox="0 0 24 24" id="themeIcon"></svg>
+      </button>
+      <button class="icon-btn menu-btn" id="menu" aria-label="Menu" aria-expanded="false">
+        <svg viewBox="0 0 24 24"><path d="M4 8h16M4 16h16"/></svg>
+      </button>
+    </div>
+  </div>
+</nav>
+
+<main id="top">
+
+<!-- HERO -->
+<header class="hero">
+  <div class="avatar" aria-hidden="true" id="avatar">SA</div>
+  <div class="pill"><span class="dot"></span> <span data-i="pill"></span></div>
+  <h1 data-ih="h1"></h1>
+  <p data-i="hero_p"></p>
+  <div class="btns">
+    <a class="btn primary" href="https://www.behance.net/shimaaalahmadi" target="_blank" rel="noopener" data-i="btn_work"></a>
+    <a class="btn ghost" href="Shaima_Alahmadi_CV.pdf" download>
+      <svg viewBox="0 0 24 24"><path d="M12 4v11m0 0-4-4m4 4 4-4M5 20h14"/></svg> <span data-i="btn_cv"></span>
+    </a>
+  </div>
+  <div class="socials">
+    <a href="mailto:shemalahmadii@gmail.com" aria-label="Email"><svg viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="14" rx="3"/><path d="m4 7 8 6 8-6"/></svg></a>
+<a href="https://www.behance.net/shimaaalahmadi" target="_blank" rel="noopener" aria-label="Behance"><svg viewBox="0 0 24 24"><text x="12" y="16" text-anchor="middle" font-size="11" font-weight="700" fill="currentColor" stroke="none">Bē</text><rect x="2.500" y="2.500" width="19" height="19" rx="5"/></svg></a>
+    <a href="https://www.linkedin.com/in/engshaimaalahmadi" target="_blank" rel="noopener" aria-label="LinkedIn"><svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="4"/><path d="M8 11v5M8 8v.01M12 16v-5m0 2a2.5 2.5 0 0 1 5 0v3"/></svg></a>
+    <a href="https://github.com/byshaima" target="_blank" rel="noopener" aria-label="GitHub"><svg viewBox="0 0 24 24"><path d="M9 19c-4 1.2-4-2-6-2.5m12 4.5v-3.5a3 3 0 0 0-.8-2.3c2.8-.3 5.8-1.4 5.8-6.2a4.8 4.8 0 0 0-1.3-3.3 4.5 4.5 0 0 0-.1-3.3s-1-.3-3.500 1.300a12 12 0 0 0-6.200 0C6.400 2.600 5.400 2.900 5.400 2.900a4.500 4.500 0 0 0-.1 3.300A4.800 4.800 0 0 0 4 9.500c0 4.800 3 5.900 5.800 6.200a3 3 0 0 0-.8 2.300V21"/></svg></a>
+  </div>
+</header>
+
+<!-- STATS -->
+<section class="alt" style="padding:70px 22px">
+  <div class="wrap stats rv">
+    <div class="stat"><b data-to="3.591" data-dec="3">0</b><span data-i="st_gpa"></span></div>
+    <div class="stat"><b data-to="532" data-suffix="+">0</b><span data-i="st_hours"></span></div>
+    <div class="stat"><b data-to="8">0</b><span data-i="st_certs"></span></div>
+    <div class="stat"><b id="awardCount" data-to="7">0</b><span data-i="st_awards"></span></div>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section id="about">
+  <div class="wrap">
+    <div class="head rv"><h2 data-i="about_h"></h2></div>
+    <div class="about rv">
+      <div id="aboutText"></div>
+      <div class="facts" id="facts"></div>
+    </div>
+  </div>
+</section>
+
+<!-- EXPERIENCE -->
+<section id="experience" class="alt">
+  <div class="wrap">
+    <div class="head rv"><h2 data-i="exp_h"></h2><p class="lead" data-i="exp_lead"></p></div>
+    <div class="rv">
+      <div class="seg" role="tablist" id="expTabs">
+        <button role="tab" aria-selected="true" data-tab="exp" data-i="tab_exp"></button>
+        <button role="tab" aria-selected="false" data-tab="edu" data-i="tab_edu"></button>
+      </div>
+      <div class="tl" id="tl"></div>
+    </div>
+  </div>
+</section>
+
+<!-- PROJECTS -->
+<section id="projects">
+  <div class="wrap">
+    <div class="head rv"><h2 data-i="proj_h"></h2><p class="lead" data-i="proj_lead"></p></div>
+    <div class="tiles rv" id="tiles"></div>
+  </div>
+</section>
+
+<dialog id="dlg" class="wide" aria-labelledby="dTitle">
+  <button class="close" id="dClose" aria-label="Close"><svg viewBox="0 0 24 24"><path d="m6 6 12 12M18 6 6 18"/></svg></button>
+  <small id="dKind" style="color:var(--muted)"></small>
+  <h3 id="dTitle"></h3>
+  <p class="sub" id="dSub"></p>
+  <div class="gallery" id="dGallery"></div>
+  <ul id="dList"></ul>
+  <div class="tags" id="dTags"></div>
+  <div id="dLinks"></div>
+</dialog>
+
+<dialog id="lb" aria-label="Preview">
+  <button class="close" id="lbClose" aria-label="Close"><svg viewBox="0 0 24 24"><path d="m6 6 12 12M18 6 6 18"/></svg></button>
+  <img id="lbImg" alt="">
+  <div id="lbCap"></div>
+</dialog>
+
+<!-- HONORS -->
+<section id="awards" class="alt">
+  <div class="wrap">
+    <div class="head rv"><h2 data-i="aw_h"></h2><p class="lead" data-i="aw_lead"></p></div>
+    <div class="grid3 rv" id="awardList"></div>
+  </div>
+</section>
+
+<!-- RECOMMENDATIONS -->
+<section id="letters">
+  <div class="wrap">
+    <div class="head rv"><h2 data-i="lt_h"></h2><p class="lead" data-i="lt_lead"></p></div>
+    <div class="letters rv" id="letterList"></div>
+  </div>
+</section>
+
+<!-- SKILLS -->
+<section id="skills" class="alt">
+  <div class="wrap">
+    <div class="head rv"><h2 data-i="sk_h"></h2></div>
+    <div class="rv">
+      <div class="seg" role="tablist" id="skillTabs">
+        <button role="tab" aria-selected="true" data-k="tech" data-i="sk_tech"></button>
+        <button role="tab" aria-selected="false" data-k="proc" data-i="sk_proc"></button>
+        <button role="tab" aria-selected="false" data-k="soft" data-i="sk_soft"></button>
+      </div>
+      <div class="chips" id="chips"></div>
+    </div>
+  </div>
+</section>
+
+<!-- CERTIFICATES -->
+<section id="certs">
+  <div class="wrap">
+    <div class="head rv"><h2 data-i="ce_h"></h2></div>
+    <div class="certs rv" id="certList"></div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact" class="alt">
+  <div class="wrap contact rv">
+    <h2 data-i="ct_h"></h2>
+    <p class="lead" data-i="ct_p"></p>
+    <div class="btns">
+      <a class="btn primary" href="mailto:shemalahmadii@gmail.com">
+        <svg viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="14" rx="3"/><path d="m4 7 8 6 8-6"/></svg> <span data-i="ct_mail"></span>
+      </a>
+
+    </div>
+  </div>
+</section>
+
+</main>
+<footer data-i="footer"></footer>
+
+<script>
+const $ = (s, r=document) => r.querySelector(s), $$ = (s, r=document) => [...r.querySelectorAll(s)];
+
+/* =====================================================================
+   CONTENT — every text has English (en) and Arabic (ar). Edit freely.
+   ===================================================================== */
+const UI = {
+  title:{en:'Shaima Alahmadi — Software Engineer & UI/UX Designer', ar:'شيماء الأحمدي — مهندسة برمجيات ومصممة UI/UX'},
+  brand:{en:'Shaima', ar:'شيماء'},
+  n_about:{en:'About', ar:'نبذة'}, n_exp:{en:'Experience', ar:'الخبرات'}, n_proj:{en:'Projects', ar:'المشاريع'},
+  n_awards:{en:'Honors', ar:'التكريمات'}, n_letters:{en:'Recommendations', ar:'التوصيات'}, n_skills:{en:'Skills', ar:'المهارات'}, n_contact:{en:'Contact', ar:'تواصل'},
+  pill:{en:'Fresh graduate', ar:'خريجة جديدة'},
+  h1:{en:'Software Engineer.<br><span class="grad">Front-End &amp; UI/UX.</span>', ar:'مهندسة برمجيات.<br><span class="grad">واجهات أمامية وUI/UX.</span>'},
+  hero_p:{en:'I’m Shaima Alahmadi, a Software Engineer specializing in Front-End Development and UI/UX Design. I transform complex systems into seamless, user-centered digital experiences.', ar:'أنا شيماء الأحمدي، مهندسة برمجيات متخصصة في تطوير الواجهات الأمامية وتصميم تجربة المستخدم. أحوّل الأنظمة المعقدة إلى تجارب رقمية سلسة تتمحور حول المستخدم.'},
+  btn_work:{en:'View my work on Behance', ar:'استعرض أعمالي على Behance'}, btn_cv:{en:'Download CV', ar:'تحميل السيرة الذاتية'},
+  st_gpa:{en:'GPA out of 4.00', ar:'المعدل من 4.00'}, st_hours:{en:'Volunteer hours', ar:'ساعة تطوعية'},
+  st_certs:{en:'Professional certificates', ar:'شهادة مهنية'}, st_awards:{en:'Awards & honors', ar:'تكريم وجائزة'},
+  about_h:{en:'About me.', ar:'نبذة عني.'},
+  exp_h:{en:'Experience & education.', ar:'الخبرات والتعليم.'}, exp_lead:{en:"Where I've worked, led, and learned.", ar:'أين عملت وقدت وتعلمت.'},
+  tab_exp:{en:'Experience', ar:'الخبرات'}, tab_edu:{en:'Education', ar:'التعليم'},
+  proj_h:{en:'Selected projects.', ar:'مشاريع مختارة.'}, proj_lead:{en:'Select a project to see the screens and how I built it.', ar:'اضغط على المشروع لعرض الواجهات وطريقة بنائه.'},
+  aw_h:{en:'Honors & awards.', ar:'التكريمات والجوائز.'}, aw_lead:{en:'Real certificates and recognition. Select one to view it in full.', ar:'شهادات وتكريمات حقيقية. اضغط على أي شهادة لعرضها كاملة.'},
+  lt_h:{en:'Recommendation letters.', ar:'خطابات التوصية.'}, lt_lead:{en:'What my professors say about working with me.', ar:'ما يقوله أساتذتي عن تجربتهم معي.'},
+  sk_h:{en:'Skills.', ar:'المهارات.'}, sk_tech:{en:'Technical', ar:'تقنية'}, sk_proc:{en:'Engineering process', ar:'منهجيات هندسية'}, sk_soft:{en:'Leadership', ar:'قيادية وشخصية'},
+  ce_h:{en:'Certificates.', ar:'الشهادات.'},
+  ct_h:{en:"Let's work together.", ar:'خلّينا نشتغل مع بعض.'},
+  ct_p:{en:"I'm looking for my first role as a software Engineer. Say hello.", ar:'أبحث عن أول فرصة وظيفية كمهندسة برمجيات\ -. يسعدني تواصلك.'},
+  ct_mail:{en:'Send an email', ar:'أرسل بريداً'}, ct_call:{en:'Call me', ar:'اتصل بي'},
+  footer:{en:'© 2026 Shaima Alahmadi. All rights reserved.', ar:'© 2026 شيماء الأحمدي. جميع الحقوق محفوظة.'},
+  case_study:{en:'Read the full case study (PDF)', ar:'قراءة دراسة الحالة كاملة (PDF)'},
+  view_cert:{en:'View certificate', ar:'عرض الشهادة'}, read_letter:{en:'Read full letter', ar:'قراءة الخطاب كاملاً'},
+  about_h2:{en:'About me.', ar:'نبذة عني.'}
+};
+
+const ABOUT = {
+  en:[
+    'I’m a <strong>Software Engineer</strong> passionate about bridging Front-End Development with thoughtful UI/UX Design to build scalable, human-centered digital products.',
+    'Recognized as the <strong>#1 Oracle Ambassador Leader nationwide</strong> (competing across 20 Saudi universities) and honored with the "Jaheziya" Exam Excellence Award by ETEC as one of the top graduates in Saudi Arabia.',
+    'During my COOP in Digital Transformation & Smart Cities at <strong>Madinah Municipality</strong>, I co-developed core systems for the <strong>Raseel Portal, impacting 3,000+ employees</strong>. From backend logic (Django/Python) to dynamic interfaces (Angular/Figma) and ML integration (SparkHub), I love turning complex workflows into simple, intuitive user experiences.'],
+  ar:[
+    'أنا <strong>مهندسة برمجيات</strong> شغوفة بالربط بين تطوير الواجهات الأمامية وتصميم تجربة المستخدم المدروس، لبناء منتجات رقمية قابلة للتوسع تضع الإنسان في المركز.',
+    'حصلت على <strong>المركز الأول كأفضل قائدة لسفراء أوراكل على مستوى المملكة</strong> (بين 20 جامعة سعودية)، وكُرّمت بجائزة التميز في اختبار «جاهزية» من هيئة تقويم التعليم والتدريب كواحدة من أوائل الخريجين في المملكة.',
+    'خلال التدريب التعاوني في التحول الرقمي والمدن الذكية بـ<strong>أمانة منطقة المدينة المنورة</strong>، شاركت في تطوير الأنظمة الأساسية لـ<strong>بوابة رسيل، بأثر شمل أكثر من 3,000 موظف</strong>. من منطق الـBackend (Django/Python) إلى الواجهات الديناميكية (Angular/Figma) ودمج تعلّم الآلة (SparkHub)، أحب تحويل مسارات العمل المعقدة إلى تجارب استخدام بسيطة وبديهية.']
+};
+const FACTS = [
+  {ic:'<path d="m3 9 9-5 9 5-9 5zM7 12v5c3 2.5 7 2.5 10 0v-5"/>', k:{en:'Education',ar:'التعليم'}, v:{en:'B.Sc. Software Engineering',ar:'بكالوريوس هندسة البرمجيات'}},
+  {ic:'<path d="M12 21s7-6 7-11a7 7 0 0 0-14 0c0 5 7 11 7 11z"/><circle cx="12" cy="10" r="2.5"/>', k:{en:'Based in',ar:'الموقع'}, v:{en:'Saudi Arabia',ar:'المملكة العربية السعودية'}},
+  {ic:'<circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3a14 14 0 0 1 0 18M12 3a14 14 0 0 0 0 18"/>', k:{en:'Languages',ar:'اللغات'}, v:{en:'Arabic · English',ar:'العربية · الإنجليزية'}},
+  {ic:'<path d="M12 3 4 7v5c0 5 3.5 8 8 9 4.5-1 8-4 8-9V7z"/>', k:{en:'Membership',ar:'العضوية'}, v:{en:'Saudi Council of Engineers',ar:'الهيئة السعودية للمهندسين'}}
+];
+
+const EXP = [
+  {when:{en:'Nov 2025 – Jun 2026',ar:'نوفمبر 2025 – يونيو 2026'}, t:{en:'Oracle Ambassadors Leader',ar:'قائدة سفراء أوراكل'}, org:{en:'Oracle Saudi Arabia',ar:'أوراكل السعودية'},
+   d:{en:'Awarded Best Oracle Ambassador nationwide, competing against top candidates across 20 Saudi universities, for driving impactful technical initiatives and student engagement.', ar:'نلت جائزة أفضل سفيرة لأوراكل على مستوى المملكة بعد منافسة أفضل المرشحين من 20 جامعة سعودية، تقديراً لقيادة مبادرات تقنية مؤثرة ورفع مشاركة الطلبة.'},
+   cert:'images/awards/oracle.webp'},
+  {when:{en:'Jun 2025 – Jan 2026',ar:'يونيو 2025 – يناير 2026'}, t:{en:'COOP Trainee, Digital Transformation & Smart Cities',ar:'متدربة تعاوني، التحول الرقمي والمدن الذكية'}, org:{en:'Madinah Municipality · Digital Products Team',ar:'أمانة منطقة المدينة المنورة · فريق المنتجات الرقمية'},
+   d:{en:'Engineered and deployed Raseel, a transactional web portal directly serving 3,000+ municipality employees, streamlining daily operations and legacy workflows.', ar:'طورت ونشرت «رسيل»، بوابة ويب لإدارة المعاملات تخدم مباشرة أكثر من 3,000 موظف في الأمانة، وتبسّط العمل اليومي ومسارات العمل القديمة.'},
+   cert:'images/awards/coop-completion.webp'},
+  {when:{en:'Aug 2024 – Oct 2024',ar:'أغسطس 2024 – أكتوبر 2024'}, t:{en:'UI/UX Designer Intern',ar:'متدربة تصميم UI/UX'}, org:{en:'Tuwaiq Academy & Misk',ar:'أكاديمية طويق ومسك'},
+   d:{en:'Worked through the full UI/UX design process, creating interactive prototypes and user-centered wireframes.', ar:'عملت على مراحل تصميم تجربة المستخدم كاملة، وأنشأت نماذج أولية تفاعلية وهياكل واجهات تتمحور حول المستخدم.'}},
+  {when:{en:'Nov 2023 – Apr 2026',ar:'نوفمبر 2023 – أبريل 2026'}, t:{en:'Head of Activities Team',ar:'رئيسة فريق الأنشطة'}, org:{en:'University of Hail',ar:'جامعة حائل'},
+   d:{en:'Led the student activities team, coordinating large campus events and hackathons while improving student engagement.', ar:'قدت فريق الأنشطة الطلابية، ونسقت فعاليات جامعية كبيرة وهاكاثونات، ورفعت مستوى تفاعل الطلبة.'}}
+];
+const EDU = [
+  {when:{en:'Aug 2021 – Jun 2026',ar:'أغسطس 2021 – يونيو 2026'}, t:{en:'B.Sc. in Software Engineering',ar:'بكالوريوس هندسة البرمجيات'}, org:{en:'University of Hail',ar:'جامعة حائل'},
+   d:{en:'Graduated with Excellent, Second-Class Honors. GPA 3.591 / 4.00.', ar:'تخرجت بتقدير ممتاز مع مرتبة الشرف الثانية. المعدل التراكمي 3.591 من 4.00.'},
+   cert:'images/education/graduation.webp'},
+  {when:{en:'Aug 2024 – Oct 2024',ar:'أغسطس 2024 – أكتوبر 2024'}, t:{en:'UI/UX Bootcamp',ar:'معسكر UI/UX'}, org:{en:'Tuwaiq Academy & Misk',ar:'أكاديمية طويق ومسك'},
+   d:{en:'Intensive 160-hour training in user interface and user experience design, ending with a final applied project.', ar:'تدريب مكثف لمدة 160 ساعة في تصميم تجربة وواجهات المستخدم، تُوّج بمشروع تطبيقي نهائي.'},
+   cert:'images/education/bootcamp.webp'}
+];
+
+const PROJECTS = {
+  spark:{cls:'a', kind:{en:'Senior graduation project',ar:'مشروع التخرج'}, title:'SparkHub',
+    blurb:{en:'One platform to manage university clubs and their events.', ar:'منصة واحدة لإدارة الأندية الجامعية وفعالياتها.'},
+    sub:{en:'A modular web platform built to digitalize and automate university club operations and event workflows. Stack: Angular, Django, REST APIs, Python, SQL, Figma. Available in English and Arabic (RTL).', ar:'منصة ويب مرنة لرقمنة وأتمتة عمليات الأندية الجامعية وسير الفعاليات. التقنيات: Angular وDjango وREST APIs وPython وSQL وFigma. تدعم العربية والإنجليزية (RTL).'},
+    list:{en:['Managed the full software lifecycle, turning manual and fragmented university processes into one automated system.','Designed a zero-conflict database architecture so clubs and events never clash.','Added rigorous automated testing to keep the platform stable.'],
+          ar:['أدرت دورة حياة تطوير البرمجيات كاملة، وحوّلت إجراءات جامعية يدوية ومتفرقة إلى نظام آلي واحد.','صممت قاعدة بيانات بلا تعارضات حتى لا تتداخل الأندية والفعاليات.','أضفت اختبارات آلية صارمة للحفاظ على استقرار المنصة.']},
+    tags:['Angular','Django','REST APIs','Python','SQL','Figma','ML integration','Automated testing'],
+    cover:'images/sparkhub/1.webp',
+    shots:[{src:'images/sparkhub/1.webp',cap:{en:'Landing page',ar:'الصفحة الرئيسية'}},{src:'images/sparkhub/2.webp',cap:{en:'Student home & leaderboard',ar:'الرئيسية ولوحة الترتيب'}},{src:'images/sparkhub/3.webp',cap:{en:'Arabic interface (RTL)',ar:'الواجهة العربية (RTL)'}}]},
+  raseel:{cls:'b', kind:{en:'COOP project · Madinah Municipality',ar:'مشروع التدريب التعاوني · أمانة المدينة المنورة'}, title:'Raseel Portal',
+    blurb:{en:'A transactional web portal with live dashboards for municipality teams.', ar:'بوابة ويب لإدارة المعاملات مع لوحات متابعة مباشرة لفرق الأمانة.'},
+    sub:{en:'A full-stack transactional web portal with dynamic dashboards, built to streamline internal operations and serve 3,000+ municipality employees.', ar:'بوابة ويب متكاملة (Full-stack) لإدارة المعاملات بلوحات تحكم ديناميكية، لتبسيط العمليات الداخلية وخدمة أكثر من 3,000 موظف في الأمانة.'},
+    list:{en:['Designed & deployed a live split-view A4 preview: a dual-pane editor for official transactions that shows the document layout in real time (with fixed headers and footers) before submission, eliminating formatting errors and boosting user confidence.','Engineered the portal\'s full-stack architecture, integrating interactive tracking dashboards and dynamic workflow management.','Researched user needs and redesigned the UI/UX with interactive Figma wireframes to modernize legacy employee workflows.'],
+          ar:['صممت ونشرت معاينة A4 حيّة بنافذتين: محرر للمعاملات الرسمية يعرض شكل المستند لحظياً (بترويسة وتذييل ثابتين) قبل الإرسال، مما أزال أخطاء التنسيق ورفع ثقة المستخدمين.','بنيت المعمارية المتكاملة (Full-stack) للبوابة مع لوحات متابعة تفاعلية ونظام إدارة مسارات عمل ديناميكي.','بحثت في احتياجات المستخدمين وأعدت تصميم تجربة وواجهة المستخدم بنماذج Figma تفاعلية لتحديث مسارات عمل الموظفين.']},
+    tags:['Django','Angular','Figma','UX research','Dashboards','A4 live preview'],
+    cover:'images/raseel/4.webp',
+    link:{href:'case-studies/Raseel_Case_Study.pdf', label:'case_study'},
+    shots:[{src:'images/raseel/1.webp',cap:{en:'Dashboard',ar:'لوحة المتابعة'}},{src:'images/raseel/2.webp',cap:{en:'Create transaction',ar:'إنشاء معاملة'}},{src:'images/raseel/4.webp',cap:{en:'Dashboard (laptop)',ar:'لوحة المتابعة (لابتوب)'}},{src:'images/raseel/5.webp',cap:{en:'Create transaction (laptop)',ar:'إنشاء معاملة (لابتوب)'}},{src:'images/raseel/3.webp',cap:{en:'Profile',ar:'الملف الشخصي'}}]}
+};
+
+const ico = {
+  star:'<circle cx="12" cy="9" r="6"/><path d="m8.5 14-1.5 7 5-3 5 3-1.5-7"/>',
+  cup:'<path d="M8 21h8M12 17v4M7 4h10v5a5 5 0 0 1-10 0zM17 5h3v2a3 3 0 0 1-3 3M7 5H4v2a3 3 0 0 0 3 3"/>',
+  cap:'<path d="m3 9 9-5 9 5-9 5zM7 12v5c3 2.5 7 2.5 10 0v-5"/>',
+  code:'<path d="m8 9-5 3 5 3M16 9l5 3-5 3M14 5l-4 14"/>',
+  heart:'<path d="M12 20s-8-5-8-11a4.5 4.5 0 0 1 8-2.5A4.5 4.5 0 0 1 20 9c0 6-8 11-8 11z"/>',
+  globe:'<circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3a14 14 0 0 1 0 18M12 3a14 14 0 0 0 0 18"/>',
+  doc:'<path d="M14 3H7a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V8zM14 3v5h5M9 13h6M9 17h6"/>'
+};
+const AWARDS = [
+  {i:'star', big:true, img:'images/awards/jaheziya.webp', tag:{en:'Top of the nation',ar:'من الأوائل على مستوى المملكة'},
+   t:{en:'National "Jaheziya" Exam Excellence',ar:'التميز في اختبار «جاهزية» الوطني'},
+   d:{en:'Ranked among the top Software Engineering students in "Jaheziya", the national standardized exam launched by Qiyas (ETEC) with the Council of University Affairs to measure academic performance and graduates\' readiness for the Saudi job market. Recognized with a certificate of appreciation from the College of Computer Science & Engineering.',
+      ar:'من أوائل طلبة هندسة البرمجيات في اختبار «جاهزية»، الاختبار الوطني المعياري الذي أطلقه مركز قياس التابع لهيئة تقويم التعليم والتدريب بالتعاون مع مجلس شؤون الجامعات، لقياس الأداء الأكاديمي وجاهزية الخريجين المتوقعين لسوق العمل في المملكة. وكرّمتني عمادة كلية علوم وهندسة الحاسب بشهادة شكر وتقدير.'}},
+  {i:'cup', img:'images/awards/oracle.webp',
+   t:{en:'1st Place · Best Oracle Ambassador Leader',ar:'المركز الأول · أفضل قائدة سفراء أوراكل'},
+   d:{en:'Won first place in the Mostaqbali Competition as the best ambassador leader across 20 Saudi universities.', ar:'فزت بالمركز الأول في مسابقة «مستقبلي» كأفضل قائدة سفراء بين 20 جامعة سعودية.'}},
+  {i:'heart', img:'images/awards/coop-appreciation.webp',
+   t:{en:'Certificate of Appreciation · Madinah Municipality',ar:'شهادة تقدير · أمانة المدينة المنورة'},
+   d:{en:'For dedication, professionalism, and valuable contributions to digital products and services during my COOP training.', ar:'تقديراً للتفاني والاحترافية والمساهمة في تطوير المنتجات والخدمات الرقمية خلال التدريب التعاوني.'}},
+  {i:'cap',
+   t:{en:'University Academic Excellence Honor',ar:'تكريم التفوق الأكاديمي'},
+   d:{en:'Honored by the University President and the College Dean for academic achievement and national exam ranking.', ar:'كرّمني رئيس الجامعة وعميد الكلية لتفوقي الأكاديمي وترتيبي في الاختبار الوطني.'}},
+  {i:'code',
+   t:{en:'Best Software Engineering Project',ar:'أفضل مشروع في هندسة البرمجيات'},
+   d:{en:'100% grade, top of the cohort, voted by professors.', ar:'درجة 100%، الأولى على دفعتي بتصويت الأساتذة.'}},
+  {i:'heart',
+   t:{en:'Best Student · Positive Behavior',ar:'الطالبة المثالية · السلوك الإيجابي'},
+   d:{en:'Voted by professors and colleagues.', ar:'بتصويت الأساتذة والزملاء.'}},
+  {i:'globe',
+   t:{en:'NASA Space Apps Hackathon',ar:'هاكاثون ناسا Space Apps'},
+   d:{en:'Environmental protection project.', ar:'مشروع في مجال حماية البيئة.'}}
+];
+
+const LETTERS = [
+  {img:'letters/arwa.webp', ini:{en:'AA',ar:'أ'}, name:{en:'Dr. Arwa N. Aledaily, PhD',ar:'د. أروى العديلي'}, role:{en:'Assistant Professor · College of Computer Science & Engineering, University of Hail',ar:'أستاذ مساعد · كلية علوم وهندسة الحاسب، جامعة حائل'},
+   q:{en:'"An exceptional student."',ar:'«طالبة استثنائية.»'},
+   d:{en:'Taught me Introduction to Software Engineering and Ethics in Software Engineering, where I earned A+ in both. Highlights my responsibility, cooperation, and teamwork.', ar:'درّستني مقرري مقدمة في هندسة البرمجيات وأخلاقيات هندسة البرمجيات وحصلت فيهما على A+. وأشادت بمسؤوليتي وتعاوني وعملي ضمن الفريق.'}},
+  {img:'letters/salwa.webp', ini:{en:'SS',ar:'س'}, name:{en:'Dr. Salwa Saad',ar:'د. سلوى سعد'}, role:{en:'Assistant Professor · College of Computer Science & Engineering, University of Hail',ar:'أستاذ مساعد · كلية علوم وهندسة الحاسب، جامعة حائل'},
+   q:{en:'"I highly recommend Shaima without reservation."',ar:'«أوصي بها بلا تحفظ.»'},
+   d:{en:'My professor in SENG-480 (A+). Notes my analytical, structured thinking, clear presentations, and ability to work independently and in a team.', ar:'أستاذتي في مقرر SENG-480 (A+). أشادت بتفكيري التحليلي المنظم، وعروضي الواضحة، وقدرتي على العمل باستقلالية وضمن فريق.'}}
+];
+
+const SKILLS = {
+  tech:{en:['Angular','HTML5 / CSS3','TypeScript','JavaScript','Python','Django','SQL','REST APIs','Figma','Git & GitHub'], ar:['Angular','HTML5 / CSS3','TypeScript','JavaScript','Python','Django','SQL','REST APIs','Figma','Git & GitHub']},
+  proc:{en:['SDLC','Responsive design','Component-based architecture','Azure DevOps','Agile / Scrum','Testing','UI/UX wireframing & prototyping'], ar:['SDLC','التصميم المتجاوب (Responsive)','البنية المعتمدة على المكوّنات','Azure DevOps','Agile / Scrum','الاختبار (Testing)','تصميم هياكل ونماذج UI/UX']},
+  soft:{en:['Strategic planning','Team leadership','Problem-solving','Public speaking','Project management'], ar:['التخطيط الاستراتيجي','قيادة الفرق','حل المشكلات','الإلقاء والتحدث أمام الجمهور','إدارة المشاريع']}
+};
+
+const CERTS = [
+  {t:{en:'Google UX Design Professional Certificate',ar:'شهادة جوجل المهنية في تصميم تجربة المستخدم'}, o:{en:'Google',ar:'جوجل'}},
+  {t:{en:'AWS Certified Cloud Practitioner',ar:'شهادة AWS لممارس الحوسبة السحابية'}, o:{en:'Amazon Web Services',ar:'أمازون ويب سيرفيسز'}},
+  {t:{en:'HCIA-IoT Certificate',ar:'شهادة HCIA في إنترنت الأشياء'}, o:{en:'SDA & Huawei',ar:'SDA وهواوي'}},
+  {t:{en:'Cyber Security Program',ar:'برنامج الأمن السيبراني'}, o:{en:'NCA & KAUST',ar:'الهيئة الوطنية للأمن السيبراني وكاوست'}},
+  {t:{en:'Applications Development Bootcamp',ar:'معسكر تطوير التطبيقات'}, o:{en:'Microsoft',ar:'مايكروسوفت'}},
+  {t:{en:'UI/UX Program',ar:'برنامج UI/UX'}, o:{en:'Misk Foundation',ar:'مؤسسة مسك'}},
+  {t:{en:'Financial Sustainability Nanodegree',ar:'نانو ديغري الاستدامة المالية'}, o:{en:'Banque Saudi Fransi (BSF)',ar:'البنك السعودي الفرنسي'}},
+  {t:{en:'UX Virtual Work Experience',ar:'تجربة عمل افتراضية في تجربة المستخدم'}, o:{en:'stc',ar:'stc'}}
+];
+
+/* =====================================================================
+   ENGINE
+   ===================================================================== */
+let lang = 'en', tab = 'exp', skillKey = 'tech';
+const L = o => (o && typeof o === 'object' && !Array.isArray(o)) ? (o[lang] ?? o.en) : o;
+const root = document.documentElement;
+
+/* Theme */
+const themeIcon = $('#themeIcon');
+const sun = '<circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/>';
+const moon = '<path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z"/>';
+function setTheme(t){ root.dataset.theme = t; themeIcon.innerHTML = t === 'dark' ? sun : moon;
+  $('meta[name=theme-color]').content = t === 'dark' ? '#000000' : '#f5f5f7';
+  try{ localStorage.setItem('theme', t) }catch(e){} }
+let savedTheme = null; try{ savedTheme = localStorage.getItem('theme') }catch(e){}
+setTheme(savedTheme || (matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light'));
+$('#theme').onclick = () => setTheme(root.dataset.theme === 'dark' ? 'light' : 'dark');
+
+/* Render everything for the current language */
+function render(){
+  root.lang = lang; root.dir = lang === 'ar' ? 'rtl' : 'ltr';
+  document.title = L(UI.title);
+  $('#lang').textContent = lang === 'ar' ? 'EN' : 'عربي';
+  $('#avatar').textContent = lang === 'ar' ? 'ش أ' : 'SA';
+  $$('[data-i]').forEach(el => el.textContent = L(UI[el.dataset.i]));
+  $$('[data-ih]').forEach(el => el.innerHTML = L(UI[el.dataset.ih]));
+
+  $('#aboutText').innerHTML = ABOUT[lang].map(p => `<p>${p}</p>`).join('');
+  $('#facts').innerHTML = FACTS.map(f => `<div class="fact"><div class="ic"><svg viewBox="0 0 24 24">${f.ic}</svg></div><div><small>${L(f.k)}</small>${L(f.v)}</div></div>`).join('');
+
+  renderTimeline();
+
+  $('#tiles').innerHTML = Object.entries(PROJECTS).map(([k,p]) => `
+    <button class="tile ${p.cls}" data-project="${k}" aria-haspopup="dialog">
+      <span class="plus"><svg viewBox="0 0 24 24"><path d="M12 5v14M5 12h14"/></svg></span>
+      <div>
+        <small>${L(p.kind)}</small>
+        <h3>${p.title}</h3>
+        <p>${L(p.blurb)}</p>
+        <div class="tags">${p.tags.slice(0,3).map(t => `<span class="tag">${t}</span>`).join('')}</div>
+      </div>
+      <div class="shot"><img src="${p.cover}" alt="${p.title}" loading="lazy" onerror="this.remove()"></div>
+    </button>`).join('');
+
+  $('#awardList').innerHTML = AWARDS.map(a => `
+    <figure class="award${a.img ? ' has-img' : ''}${a.big ? ' big' : ''}">
+      ${a.img ? `<div class="ph" data-lb="${a.img}" data-cap="${L(a.t)}"><img loading="lazy" src="${a.img}" alt="${L(a.t)}" onerror="const c=this.closest('.award');c.classList.remove('has-img');this.parentElement.remove()"></div>` : ''}
+      <div>
+        <div class="ic"><svg viewBox="0 0 24 24" style="font-size:30px">${ico[a.i]}</svg></div>
+        ${a.tag ? `<span class="tagline">${L(a.tag)}</span>` : ''}
+        <h3>${L(a.t)}</h3><p>${L(a.d)}</p>
+      </div>
+    </figure>`).join('');
+  $('#awardCount').dataset.to = AWARDS.length;
+
+  $('#letterList').innerHTML = LETTERS.map(l => `
+    <article class="letter">
+      <div class="lp" data-lb="${l.img}" data-cap="${L(l.name)}"><img loading="lazy" src="${l.img}" alt="${L(l.name)}"></div>
+      <div class="who"><div class="av">${L(l.ini)}</div><div><h3>${L(l.name)}</h3><small>${L(l.role)}</small></div></div>
+      <blockquote>${L(l.q)}</blockquote>
+      <p>${L(l.d)}</p>
+      <button class="btn ghost" data-lb="${l.img}" data-cap="${L(l.name)}"><svg viewBox="0 0 24 24">${ico.doc}</svg> ${L(UI.read_letter)}</button>
+    </article>`).join('');
+
+  renderSkills();
+  $('#certList').innerHTML = CERTS.map(c => `<div class="cert"><div class="ic"><svg viewBox="0 0 24 24">${ico.star}</svg></div><div>${L(c.t)}<small>${L(c.o)}</small></div></div>`).join('');
+}
+function renderTimeline(){
+  const rows = tab === 'exp' ? EXP : EDU;
+  $('#tl').innerHTML = rows.map(r => `
+    <div class="item"><div class="when">${L(r.when)}</div><div>
+      <h3>${L(r.t)}</h3><div class="org">${L(r.org)}</div><p>${L(r.d)}</p>
+      ${r.cert ? `<button class="lnk" data-lb="${r.cert}" data-cap="${L(r.t)}"><svg viewBox="0 0 24 24">${ico.doc}</svg> ${L(UI.view_cert)}</button>` : ''}
+    </div></div>`).join('');
+}
+function renderSkills(){ $('#chips').innerHTML = SKILLS[skillKey][lang].map(s => `<span class="chip">${s}</span>`).join(''); }
+
+/* Language */
+let savedLang = null; try{ savedLang = localStorage.getItem('lang') }catch(e){}
+lang = savedLang || ((navigator.language || 'en').toLowerCase().startsWith('ar') ? 'ar' : 'en');
+$('#lang').onclick = () => { lang = lang === 'ar' ? 'en' : 'ar'; try{ localStorage.setItem('lang', lang) }catch(e){} render(); observeNew(); };
+render();
+
+/* Mobile menu */
+const menu = $('#menu'), links = $('#links');
+menu.onclick = () => { const o = links.classList.toggle('open'); menu.setAttribute('aria-expanded', o); };
+links.addEventListener('click', e => { if(e.target.closest('a')){ links.classList.remove('open'); menu.setAttribute('aria-expanded', false); } });
+
+/* Active nav link */
+const navObs = new IntersectionObserver(es => es.forEach(e => {
+  if(e.isIntersecting) $$('#links a').forEach(a => a.classList.toggle('active', a.getAttribute('href') === '#' + e.target.id));
+}), {rootMargin:'-45% 0px -50% 0px'});
+$$('main section[id]').forEach(s => navObs.observe(s));
+
+/* Reveal + counters */
+function count(el){
+  const to = +el.dataset.to, dec = +(el.dataset.dec||0), suf = el.dataset.suffix||'';
+  if(matchMedia('(prefers-reduced-motion: reduce)').matches){ el.textContent = to.toFixed(dec)+suf; return; }
+  const t0 = performance.now(), d = 1400;
+  (function tick(t){ const p = Math.min((t-t0)/d,1), e = 1-Math.pow(1-p,3);
+    el.textContent = (to*e).toFixed(dec)+suf; if(p<1) requestAnimationFrame(tick); })(t0);
+}
+const rv = new IntersectionObserver(es => es.forEach(e => {
+  if(e.isIntersecting){ e.target.classList.add('in'); $$('[data-to]', e.target).forEach(count); rv.unobserve(e.target); }
+}), {threshold:.12});
+function observeNew(){ $$('.rv:not(.in)').forEach(el => rv.observe(el)); }
+observeNew();
+
+/* Tabs */
+$('#expTabs').addEventListener('click', e => { const b = e.target.closest('button'); if(!b) return;
+  tab = b.dataset.tab; $$('#expTabs button').forEach(x => x.setAttribute('aria-selected', x === b)); renderTimeline(); });
+$('#skillTabs').addEventListener('click', e => { const b = e.target.closest('button'); if(!b) return;
+  skillKey = b.dataset.k; $$('#skillTabs button').forEach(x => x.setAttribute('aria-selected', x === b)); renderSkills(); });
+
+/* Project dialog */
+const dlg = $('#dlg');
+document.addEventListener('click', e => {
+  const t = e.target.closest('[data-project]');
+  if(!t) return;
+  const p = PROJECTS[t.dataset.project];
+  $('#dKind').textContent = L(p.kind); $('#dTitle').textContent = p.title; $('#dSub').textContent = L(p.sub);
+  $('#dGallery').innerHTML = p.shots.map(s => `<figure><img data-lb="${s.src}" data-cap="${p.title} — ${L(s.cap)}" loading="lazy" src="${s.src}" alt="${p.title} — ${L(s.cap)}" onerror="this.closest('figure').remove()"><figcaption>${L(s.cap)}</figcaption></figure>`).join('');
+  $('#dList').innerHTML = L(p.list).map(i => `<li>${i}</li>`).join('');
+  $('#dTags').innerHTML = p.tags.map(i => `<span class="tag">${i}</span>`).join('');
+  $('#dLinks').innerHTML = p.link ? `<a class="btn primary" style="margin-top:24px" href="${p.link.href}" target="_blank" rel="noopener"><svg viewBox="0 0 24 24">${ico.doc}</svg> ${L(UI[p.link.label])}</a>` : '';
+  dlg.showModal();
+});
+$('#dClose').onclick = () => dlg.close();
+dlg.addEventListener('click', e => { if(e.target === dlg) dlg.close(); });
+
+/* Lightbox: anything with data-lb opens full size */
+const lb = $('#lb');
+document.addEventListener('click', e => {
+  const el = e.target.closest('[data-lb]'); if(!el) return;
+  $('#lbImg').src = el.dataset.lb; $('#lbImg').alt = el.dataset.cap || ''; $('#lbCap').textContent = el.dataset.cap || '';
+  lb.showModal(); lb.scrollTop = 0;
+});
+$('#lbClose').onclick = () => lb.close();
+lb.addEventListener('click', e => { if(e.target === lb) lb.close(); });
+</script>
+</body>
+</html>
